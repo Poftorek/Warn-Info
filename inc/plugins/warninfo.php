@@ -128,13 +128,10 @@ function warninfo(&$post)
 		{
 			if($warn['daterevoked'] == 0)
 			{
-				if($warn['expired'] == 1)
-				{
-					$expires = $lang->warninfo_expired;
-				}
-				else
-				{
+				if ($warn['expires'] != 0) {
 					$expires = date($mybb->settings['warninfo_date'], $warn['expires']);
+				} else {
+					$expires = $lang->warninfo_never;
 				}
 				$admin = get_user($warn['issuedby']);
 
